@@ -250,7 +250,7 @@ add_termux_bootstrap_second_stage_files() {
 
 	local package_arch="$1"
 	
-	mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX_PROFILE_D_DIR}"
+	mkdir -p "${BOOTSTRAP_ROOTFS}${TERMUX_PREFIX_PROFILE_D_DIR}"
 
 	echo "[*] Adding termux bootstrap second stage files..."
 
@@ -272,8 +272,8 @@ add_termux_bootstrap_second_stage_files() {
 		-e "s|@TERMUX_BOOTSTRAP__BOOTSTRAP_SECOND_STAGE_DIR@|${TERMUX_BOOTSTRAP__BOOTSTRAP_SECOND_STAGE_DIR}|g" \
 		-e "s|@TERMUX_BOOTSTRAP__BOOTSTRAP_SECOND_STAGE_ENTRY_POINT_SUBFILE@|${TERMUX_BOOTSTRAP__BOOTSTRAP_SECOND_STAGE_ENTRY_POINT_SUBFILE}|g" \
 		"$TERMUX_SCRIPTDIR/scripts/bootstrap/01-termux-bootstrap-second-stage-fallback.sh" \
-		> "${BOOTSTRAP_ROOTFS}/${TERMUX__PREFIX__PROFILE_D_DIR}/01-termux-bootstrap-second-stage-fallback.sh"
-	chmod 600 "${BOOTSTRAP_ROOTFS}/${TERMUX__PREFIX__PROFILE_D_DIR}/01-termux-bootstrap-second-stage-fallback.sh"
+		> "${BOOTSTRAP_ROOTFS}${TERMUX_PREFIX_PROFILE_D_DIR}/01-termux-bootstrap-second-stage-fallback.sh"
+	chmod 600 "${BOOTSTRAP_ROOTFS}${TERMUX_PREFIX_PROFILE_D_DIR}/01-termux-bootstrap-second-stage-fallback.sh"
 
 }
 
