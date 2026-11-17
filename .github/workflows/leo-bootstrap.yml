@@ -32,11 +32,13 @@ jobs:
             ./scripts/generate-bootstraps.sh \
             --architectures "${{ matrix.arch }}"
 
+      
       - name: Upload bootstrap artifacts
         uses: actions/upload-artifact@v4
         with:
           name: leo-bootstrap-${{ matrix.arch }}
           path: |
-            bootstrap-*.zip
+            **/bootstrap-*.zip
+            **/bootstrap-*.output.zip
           if-no-files-found: error
           
