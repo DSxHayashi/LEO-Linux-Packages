@@ -55,8 +55,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: leo-bootstrap-${{ matrix.arch }}
-          path: |
-            **/bootstrap-*.zip
-            **/bootstrap-*-output.zip
+          
+          path: output/bootstrap-${{ matrix.arch }}-output.zip
           if-no-files-found: error
+          
           
