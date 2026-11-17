@@ -35,13 +35,13 @@ jobs:
       
       
       
+      
       - name: Extract bootstrap ZIP from Docker
         run: |
           mkdir -p output
-          docker exec termux-package-builder \
-            sh -c 'find /tmp /home/builder -type f -name "bootstrap-*-output.zip" 2>/dev/null'
-          docker cp termux-package-builder:/home/builder/termux-packages/output/. ./output/
+          docker cp termux-package-builder:/tmp/leo-bootstrap-output/. ./output/
           find output -type f -name '*.zip' -print
+          
           
 
           echo "=== Output directories ==="
