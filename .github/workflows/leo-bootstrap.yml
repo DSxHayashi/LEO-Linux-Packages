@@ -37,7 +37,7 @@ jobs:
         with:
           name: leo-bootstrap-${{ matrix.arch }}
           path: |
-            bootstrap-*.zip
-            *.zip
+  output/bootstrap-*.zip
+  output/*.zip
           if-no-files-found: error
           
