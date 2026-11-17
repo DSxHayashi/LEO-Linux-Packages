@@ -32,14 +32,20 @@ jobs:
             ./scripts/generate-bootstraps.sh \
             --architectures "${{ matrix.arch }}"
 
+      
       - name: Locate bootstrap ZIP
         run: |
-          echo "Current directory:"
+          echo "=== Host directory ==="
           pwd
-          echo "ZIP files found:"
           find . -type f -name '*.zip' -print
-          echo "Root directory:"
-          ls -lah
+
+          echo "=== Docker containers ==="
+          docker ps -a
+
+          echo "=== ZIP inside Docker ==="
+          docker exec termux-package-builder \
+            find /home/builder -type f -name '*.zip' -print
+            
 
       - name: Upload bootstrap artifacts
         uses: actions/upload-artifact@v4
