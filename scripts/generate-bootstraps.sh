@@ -249,7 +249,7 @@ pull_package() {
 add_termux_bootstrap_second_stage_files() {
 
 	local package_arch="$1"
-	mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/profile.d"
+	mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX_PROFILE_D_DIR}"
 
 	echo "[*] Adding termux bootstrap second stage files..."
 
@@ -292,7 +292,9 @@ create_bootstrap_archive() {
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
-	mv -f "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./
+	
+cp -f "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" "${BOOTSTRAP_TMPDIR}/bootstrap-${1}-output.zip"
+
 	echo "[*] Finished successfully (${1})."
 }
 
