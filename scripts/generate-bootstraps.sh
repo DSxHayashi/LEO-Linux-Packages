@@ -249,6 +249,7 @@ pull_package() {
 add_termux_bootstrap_second_stage_files() {
 
 	local package_arch="$1"
+	mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/profile.d"
 
 	echo "[*] Adding termux bootstrap second stage files..."
 
