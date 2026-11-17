@@ -7,8 +7,10 @@ set -e
 
 export TERMUX_SCRIPTDIR=$(realpath "$(dirname "$(realpath "$0")")/../")
 . $(dirname "$(realpath "$0")")/properties.sh
-BOOTSTRAP_TMPDIR=$(mktemp -d "${TMPDIR:-/tmp}/bootstrap-tmp.XXXXXXXX")
-trap 'rm -rf $BOOTSTRAP_TMPDIR' EXIT
+
+BOOTSTRAP_TMPDIR="${TMPDIR:-/tmp}/leo-bootstrap-output"
+mkdir -p "$BOOTSTRAP_TMPDIR"
+
 
 # By default, bootstrap archives are compatible with Android >=7.0
 # and <10.
