@@ -33,18 +33,20 @@ jobs:
             --architectures "${{ matrix.arch }}"
 
       
+      
       - name: Locate bootstrap ZIP
         run: |
-          echo "=== Host directory ==="
-          pwd
-          find . -type f -name '*.zip' -print
-
-          echo "=== Docker containers ==="
-          docker ps -a
-
-          echo "=== ZIP inside Docker ==="
+          echo "=== Bootstrap files ==="
           docker exec termux-package-builder \
-            find /home/builder -type f -name '*.zip' -print
+            find /home/builder/termux-packages \
+            -type f \( -name 'bootstrap-*.zip' -o -name '*bootstrap*.zip' \) \
+            -print
+
+          echo "=== Output directories ==="
+          docker exec termux-package-builder \
+            find /home/builder/termux-packages \
+            -type d -name output -print
+            
             
 
       - name: Upload bootstrap artifacts
